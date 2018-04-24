@@ -10,6 +10,15 @@ class App extends Component {
 
   handleSubmit = this.handleSubmit.bind(this);
   handleChange = this.handleChange.bind(this);
+  handleRemove = this.handleRemove.bind(this);
+
+  handleRemove(index) {
+    this.setState({
+      todos: this.state.todos.filter(function(e, i) {
+        return i !== index
+      })
+    })
+  }
 
   handleChange(e) {
     this.setState({
@@ -44,6 +53,7 @@ class App extends Component {
         {todos.map((todo, index) => 
           <li key={index}>
             {todo}
+            <button onClick={this.handleRemove.bind(this, index)}>Remove</button>
           </li>
         )}
       </div>
