@@ -19,10 +19,13 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (!this.state.text.length) {
+      return
+    } else {
     this.setState({
       todos: [...this.state.todos, this.state.text],
       text: ''
-    })
+    })}
   }
 
   render() {
